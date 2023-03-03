@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>GPS Track Builder</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+        <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+        <link rel="stylesheet" href="assets/css/index.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+
+         
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7"></script>
+        <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+        <script src="assets/js/index.js"></script>
+        <script src="assets/js/config.js"></script>
+        <script src="assets/js/create_and_init_map.js"></script>
+        <script src="assets/js/set_points_and_path.js"></script>
+        <script src="assets/js/download_files.js"></script>
+        <script src="src/L.Control.Locate.js" ></script>
+
+    </head>
+
+    <body  onload="init();">
+	
+		<div id="map"></div>
+	
+        <div class="frame">
+            <div class="setting">
+                        <center><p>
+                            <label>設定間隔距離:</label><input id="interval_of_distance_set_by_user" type="text"></input><label> 單位: </label>
+                            <select id="unit_of_distance">
+                                <option value="m" selected>公尺</option>
+                                <option value="km">公里</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label>期望路徑方向:</label>
+                            <select id="direction">
+                                <optgroup label="N→S"></optgroup>
+                                    <option value="NSEW">由北向南，由東向西</option>
+                                    <option value="NSWE">由北向南，由西向東</option>
+                                <optgroup label="S→N"></optgroup>
+                                    <option value="SNEW">由南向北，由東向西</option>
+                                    <option value="SNWE">由南向北，由西向東</option>
+                                <optgroup label="E→W"></optgroup>
+                                    <option value="EWNS">由東向西，由北向南</option>
+                                    <option value="EWSN">由東向西，由南向北</option>
+                                <optgroup label="W→E"></optgroup>
+                                    <option value="WENS">由西向東，由北向南</option>
+                                    <option value="WESN">由西向東，由南向北</option>
+                            </select>
+                        </p></center>
+				
+                <label class="btn_label">
+                    <button class="set_btn" onclick="create_new_list_by_distance();">套用</button>	
+                </label>
+            </div>
+			
+			<div class="frame2">
+				<img class="dowload_btn" src="images/Download.png" title="下載路線資料" onclick="download_file();"></img>
+				<div class="log">
+					<ul id="log_msg"></ul>
+				</div>
+			</div>
+        </div>
+        
+        <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.js'></script> 
+    </body>
+</html>
