@@ -47,18 +47,16 @@ function data_package(){
         temp[2] = parseInt(data_ep.lon_differ / 256);
         temp[3] = parseInt(data_ep.lon_differ % 256);
 
-        console.log("lat differ:"+data_ep.lat_differ+" , lon differ:"+data_ep.lon_differ);
-
         let arr = new Uint8Array(new ArrayBuffer(16));
         arr[0] = data_ep.nsew_area;
         arr[1] = (data_ep.lat / (256*256*256));
         arr[2] = ((data_ep.lat % (256*256*256)) / (256*256));
         arr[3] = (((data_ep.lat % (256*256*256)) % (256*256)) / 256);
         arr[4] = (((data_ep.lat % (256*256*256)) % (256*256)) % 256);
-        arr[5] = ((data_ep.lon * 1000000) / (256*256*256));
-        arr[6] = (((data_ep.lon * 1000000) % (256*256*256)) / (256*256));
-        arr[7] = ((((data_ep.lon * 1000000) % (256*256*256)) % (256*256)) / 256);
-        arr[8] = ((((data_ep.lon * 1000000) % (256*256*256)) % (256*256)) % 256);
+        arr[5] = (data_ep.lon / (256*256*256));
+        arr[6] = ((data_ep.lon % (256*256*256)) / (256*256));
+        arr[7] = (((data_ep.lon % (256*256*256)) % (256*256)) / 256);
+        arr[8] = (((data_ep.lon % (256*256*256)) % (256*256)) % 256);
         arr[9] = parseInt(data_ep.next_address / 256);
         arr[10] = parseInt(data_ep.next_address % 256);
         arr[11] = parseInt(data_ep.cursor / 2);
@@ -67,10 +65,9 @@ function data_package(){
         arr[14] = parseInt(data_ep.lon_differ / 256);
         arr[15] = parseInt(data_ep.lon_differ % 256);
         
-
         data_list.push(arr);
 
-        //console.log(points_on_edges_of_graphics_to_output[i]);
+        console.log(points_on_edges_of_graphics_to_output[i]);
     }
     return data_list;
 }
